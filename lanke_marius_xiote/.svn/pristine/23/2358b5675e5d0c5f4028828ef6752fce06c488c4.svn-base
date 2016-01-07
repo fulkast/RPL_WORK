@@ -1,2 +1,0 @@
-map_obstacle: 100                         # int representation of obstacle in map
-clean_particle_weight: 0.0001
