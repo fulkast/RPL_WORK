@@ -1,0 +1,17 @@
+ALGORITHM_NAME : TANGENT_BUG  
+CONTROLLER_NAME : PID   
+CONTROLLER_FILE_NAME : parameter_files/PID_PARAMETERS.txt   
+WALL_FOLLOW_CONTROLLER_FILE_NAME : parameter_files/SLOW_PID_PARAMETERS.txt
+
+desired_wall_distance: 0.10
+obstacle_vanished_time_threshold: 6.5
+angle_looped_around_threshold: 1.5
+vleave_reached_distance_threshold: 0.1
+goal_reached_distance_threshold: 0.05
+angle_looped_around_threshold_unreachable: 3.14
+goal_unreachable_distance_threshold: 0.01
+move_to_next_goal_threshold: 0.05
+
+vx: 0.05
+
+

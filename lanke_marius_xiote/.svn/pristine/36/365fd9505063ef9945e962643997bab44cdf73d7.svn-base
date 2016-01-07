@@ -1,0 +1,7 @@
+CONTROLLER_NAME : PID
+k_p_go: 8.0
+k_i_go: 0.0
+k_d_go: 0.7
+k_p_vleave: 3.0
+k_i_vleave: 0.0
+k_d_vleave: 0.7

@@ -1,0 +1,31 @@
+<!-- Wireless Thymio driver. Assumes asebaros node running already on the remote machine. -->
+<launch>
+
+  <!-- Driver node -->
+  <node name="wireless_thymio_driver" 
+	pkg="thymio_navigation_driver" 
+	type="roboscoop_thymio_navigation_driver.py" 
+	output="screen">
+  </node>
+
+  <!-- Static TF information about all the sensors -->
+  <node pkg="tf" type="static_transform_publisher" name="horizontal_0_link_broadcaster" 
+	args="0.056 0.056 0.01 0.7853 0 0 /base_link /thymio_prox_horizontal_0_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="horizontal_1_link_broadcaster" 
+	args="0.074 0.030 0.01 0.3927 0 0 /base_link /thymio_prox_horizontal_1_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="horizontal_2_link_broadcaster" 
+	args="0.08 0 0.01 0 0 0 /base_link /thymio_prox_horizontal_2_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="horizontal_3_link_broadcaster" 
+	args="0.074 -0.030 0.01 -0.3927 0 0 /base_link /thymio_prox_horizontal_3_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="horizontal_4_link_broadcaster" 
+	args="0.056 -0.056 0.01 -0.7853 0 0 /base_link /thymio_prox_horizontal_4_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="horizontal_5_link_broadcaster" 
+	args="-0.03 0.03 0.01 -3.1415 0 0 /base_link /thymio_prox_horizontal_5_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="horizontal_6_link_broadcaster" 
+	args="-0.03 -0.03 0.01 -3.1415 0 0 /base_link /thymio_prox_horizontal_6_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="ground_0_link_broadcaster" 
+	args="0.06 0.01 -0.01 0 1.5704 1.5704 /base_link /thymio_prox_ground_0_link 10" />
+  <node pkg="tf" type="static_transform_publisher" name="ground_1_link_broadcaster" 
+	args="0.06 -0.01 -0.01 0 1.5704 1.5704 /base_link /thymio_prox_ground_1_link 10" />
+
+</launch>

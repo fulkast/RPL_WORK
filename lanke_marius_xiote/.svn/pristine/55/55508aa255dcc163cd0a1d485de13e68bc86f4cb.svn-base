@@ -1,0 +1,12 @@
+<launch>
+
+  <node name="object_recognition_node" pkg="object_recognition" type="object_recognition" clear_params="true" output="screen" />
+  <node name="tf_broadcaster_node" pkg="localization" type="tf_broadcaster" clear_params="true" output="screen" />
+     
+  <node name="rviz_node" pkg="rviz" type="rviz" />
+ 
+  <!--rosparam command="load" file="$(find localization)/parameter/distribution_bag.yaml" /-->
+  
+  <!--param name="object_files_path" type="str" value="$(find localization)/object_files.txt" /-->    
+  
+</launch>

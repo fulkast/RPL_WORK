@@ -1,0 +1,29 @@
+<launch>
+
+
+   
+    <!-- Localization -->
+    <node name="localization_node" pkg="localization" type="localization" clear_params="true" output="screen" />
+
+    <!-- Transformation boadcaster for localization -->
+    <node name="tf_broadcaster_loc_node" pkg="localization" type="tf_broadcaster_loc" clear_params="true" output="screen" />    
+    
+    <!-- Depthimage to laserscan -->
+    <node name="depthimage_to_laserscan" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" > 
+      <remap from="image" to="/camera/depth/image_raw" />
+      <param name="~range_min" value="0.3" />
+      <param name="~range_max" value="2" />
+    </node>
+      
+    <!-- Run Rviz -->	
+    <!--node name="rviz_node" pkg="rviz" type="rviz" /-->
+    
+    <!-- Ros parameter files -->
+    <rosparam command="load" file="$(find localization)/parameter/parameter_bag.yaml" />
+    <rosparam command="load" file="$(find localization)/parameter/distribution_bag.yaml" />
+    <rosparam command="load" file="$(find localization)/parameter/resample_bag.yaml" />
+    <rosparam command="load" file="$(find localization)/parameter/motion_update_bag.yaml" />
+    <rosparam command="load" file="$(find localization)/parameter/sensor_update_bag.yaml" />
+    <rosparam command="load" file="$(find localization)/parameter/visualization_bag.yaml" />  
+    
+</launch>

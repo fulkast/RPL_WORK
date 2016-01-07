@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-13-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-13-0 http://www.eiffel.com/developers/xml/configuration-1-13-0.xsd" name="thymio_app" uuid="DC112819-D718-4560-AB6B-434253B6A0FA">
+	<target name="thymio_app">
+		<root class="APP" feature="make"/>
+		<setting name="concurrency" value="scoop"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base-safe.ecf" readonly="false"/>
+		<precompile name="roboscoop" location="$ROBOSCOOP_WORKSPACE\roboscoop\roboscoop_lib\roboscoop.ecf" readonly="false"/>
+		<cluster name="thymio_app" location=".\">
+			<file_rule>
+				<exclude>/EIFGENs$</exclude>
+				<exclude>/CVS$</exclude>
+				<exclude>/.svn$</exclude>
+			</file_rule>
+			<cluster name="sensor" location=".\sensor\"/>
+			<cluster name="communication" location=".\communication\"/>
+			<cluster name="robot" location=".\robot\"/>
+			<cluster name="actuator" location=".\actuator\"/>
+		</cluster>
+	</target>
+</system>

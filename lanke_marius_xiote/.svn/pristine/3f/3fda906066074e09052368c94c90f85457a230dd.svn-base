@@ -1,0 +1,28 @@
+node_name: object_recognition_node
+camera_topic: /camera/depth/points
+camera_topic_queuesize: 1
+
+marker_topic: /visualization_marker
+marker_topic_queuesize: 1
+
+objrec_topic: /objrec_state
+objrec_topic_queuesize: 2
+
+robot_topic: /robot_objrec_state
+robot_topic_queuesize: 1
+
+camera_frame_id: /camera_rgb_optical_frame
+
+# Each label should have a corresponding <label>_dir and <label>_color field.
+labels: [firefighter, man, woman]
+
+firefighter_dir: ../data/objects/firefighter/
+firefighter_color: [0.0, 1.0, 0.0]
+
+man_dir: ../data/objects/man/
+man_color: [0.0, 1.0, 0.0]
+
+woman_dir: ../data/objects/woman/
+woman_color: [0.0, 1.0, 0.0]
+
+histogram_size: 153

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-13-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-13-0 http://www.eiffel.com/developers/xml/configuration-1-13-0.xsd" name="roboscoop_lib" uuid="FDB75B7B-1A31-4C89-88A4-44D309580EB9" library_target="roboscoop">
+	<target name="roboscoop">
+		<root all_classes="true"/>
+		<option debug="true" warning="true" full_class_checking="true" is_attached_by_default="true" void_safety="all" syntax="standard">
+			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
+		</option>
+		<setting name="concurrency" value="scoop"/>
+		<external_include location="$$ROS_LOCATION/include/"/>
+		<external_include location="$ECF_CONFIG_PATH/_cpp"/>
+		<external_include location="$$CATKIN_WORKSPACE/devel/include/"/>
+		<external_include location="$$ROBOLAB_ASEBA_PATH/asebaros/srv_gen/cpp/include/"/>
+		<external_include location="$$ROBOLAB_ASEBA_PATH/asebaros/msg_gen/cpp/include/"/>
+		<external_object location="$$ROS_LOCATION/lib/librospack.so"/>
+		<external_object location="$$ROS_LOCATION/lib/libroscpp.so"/>
+		<external_object location="$$ROS_LOCATION/lib/librosconsole.so"/>
+		<external_object location="$$ROS_LOCATION/lib/libroscpp_serialization.so"/>
+		<external_object location="$$ROS_LOCATION/lib/librostime.so"/>
+		<external_object location="$$ROS_LOCATION/lib/libxmlrpcpp.so"/>
+		<external_object location="$$LIBBOOST_PATH/libboost_system.so"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base-safe.ecf"/>
+		<cluster name="roboscoop" location=".\">
+			<file_rule>
+				<exclude>/EIFGENs$</exclude>
+				<exclude>/CVS$</exclude>
+				<exclude>/.svn$</exclude>
+			</file_rule>
+			<cluster name="controller" location=".\controller\"/>
+			<cluster name="sequencer" location=".\sequencer\"/>
+			<cluster name="ros" location=".\ros\"/>
+			<cluster name="signaler" location=".\signaler\"/>
+			<cluster name="util" location=".\util\">
+				<cluster name="graph" location=".\util\graph\"/>
+			</cluster>
+			<cluster name="common" location=".\common\"/>
+			<cluster name="msg" location=".\msg\"/>
+			<cluster name="sensor" location=".\sensor\"/>
+			<cluster name="actuator" location=".\actuator\"/>
+		</cluster>
+	</target>
+</system>

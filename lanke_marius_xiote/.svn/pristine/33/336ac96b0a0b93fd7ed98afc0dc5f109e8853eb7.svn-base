@@ -1,0 +1,12 @@
+mean_norm_dist: 0.0
+st_dev_norm_dist: 1.0 
+max_value_norm_dist_sq: 4.0
+
+mean_tri_dist: 0.0
+st_dev_tri_dist: 1.0
+max_value_tri_dist_sq: 4.0
+
+num_random_samples: 12
+norm_dist_approx_multiplicator: 0.5
+ang_dist_approx_multiplicator: 1.5
+

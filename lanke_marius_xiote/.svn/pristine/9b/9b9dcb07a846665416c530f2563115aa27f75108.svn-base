@@ -1,0 +1,49 @@
+node_name: localization_node                                   # name of the node
+subscribed_rostopic_odom: /thymio_driver/odometry              # subscribed rostopic
+queue_size_subscriber_odom: 1                                  # queue size of the subscriber
+
+subscribed_rostopic_map: /map                                  # subscribed rostopic
+queue_size_subscriber_map: 1                                   # queue size of the subscriber
+
+subscribed_rostopic_scan: /scan                                # subscribed rostopic
+queue_size_subscriber_scan: 1                                  # queue size of the subscriber
+
+pub_topic_map: map                                             # published topic for the map
+queue_size_pub_map: 1                                          # queue size of the map publisher
+
+pub_topic_particles: particles                                 # published topic for the odometry
+queue_size_pub_particles: 1                                    # queue size of the odometry publisher
+
+pub_topic_scan: scan                                           # published topic for the laser_scan
+queue_size_pub_scan: 1                                         # queue size of the laser_scan publisher
+
+pub_topic_tf: tf                                               # published topic for the tf
+queue_size_pub_tf: 1                                           # queue size of the tf publisher
+
+it_cell_x: 10                                                  # Cell/Grid iterator
+it_cell_y: 10                                                  # Cell/Grid iterator
+it_theta: 8                                                   # Iterator of theta angle between 0 and 2*pi in steps of 2*pi/it_theta
+
+pose_empty_pos_x: 0
+pose_empty_pos_y: 0
+pose_empty_pos_z: 0
+pose_empty_orient_x: 0
+pose_empty_orient_y: 0
+pose_empty_orient_z: 0
+pose_empty_orient_w: 1.0
+
+control_odom_prev_pos_x: 0
+control_odom_prev_pos_y: 0
+control_odom_prev_pos_z: 0
+control_odom_prev_orient_x: 0
+control_odom_prev_orient_y: 0
+control_odom_prev_orient_z: 0
+control_odom_prev_orient_w: 1.0
+
+control_odom_cur_pos_x: 0
+control_odom_cur_pos_y: 0
+control_odom_cur_pos_z: 0
+control_odom_cur_orient_x: 0
+control_odom_cur_orient_y: 0
+control_odom_cur_orient_z: 0
+control_odom_cur_orient_w: 1.0

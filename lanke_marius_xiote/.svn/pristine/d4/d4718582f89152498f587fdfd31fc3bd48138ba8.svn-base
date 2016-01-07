@@ -1,0 +1,20 @@
+<!-- Start nodes needed for wireless Thymio robot. -->
+<launch>
+	<!-- Thymio navigation driver -->
+	<include file="$(find roboscoop_ros)/launch/thymio_driver.launch" />
+
+	<!-- Turn depth image from PrimeSense into point cloud. -->
+	<include file="$(find roboscoop_ros)/launch/cloudify_rgb.launch" />
+
+	<!-- Sumulate laserscan by depth image. -->
+	<node name="laserscan" 
+		pkg="depthimage_to_laserscan" 
+		type="depthimage_to_laserscan"
+		args="image:=/camera/depth/image"
+		output="screen">
+	</node>
+
+	<!-- Rviz. -->
+	<node name="rviz" pkg="rviz" type="rviz" />
+
+</launch>

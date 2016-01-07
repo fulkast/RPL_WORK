@@ -1,0 +1,7 @@
+box_diag_multiplier: 0.5
+
+marker_transparancy: 0.5
+
+marker_namespace: bounding_box
+
+loop_time: 4

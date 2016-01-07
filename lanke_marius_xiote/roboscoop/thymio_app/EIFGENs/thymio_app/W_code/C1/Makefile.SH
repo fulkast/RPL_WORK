@@ -1,0 +1,86 @@
+case $CONFIG in
+'')
+	if test ! -f ../config.sh; then
+		(echo "Can't find ../config.sh."; exit 1)
+	fi 2>/dev/null
+	. ../config.sh
+	;;
+esac
+case "$O" in
+*/*) cd `expr X$0 : 'X\(.*\)/'` ;;
+esac
+echo "Compiling C code in C1"
+$spitshell >Makefile <<!GROK!THIS!
+INCLUDE_PATH =  -I"\$\$ROS_LOCATION/include/" -I"/home/frank/catkin_group_workspace/src/lanke_marius_xiote/roboscoop/roboscoop_lib/_cpp" -I"\$\$CATKIN_WORKSPACE/devel/include/" -I"\$\$CATKIN_WORKSPACE/src/ful/" -I"\$\$ROBOLAB_ASEBA_PATH/asebaros/srv_gen/cpp/include/" -I"\$\$ROBOLAB_ASEBA_PATH/asebaros/msg_gen/cpp/include/"
+SHELL = /bin/sh
+CC = $cc
+CPP = $cpp
+CFLAGS = $wkoptimize $mtccflags $large -DEIF_IEEE_BEHAVIOR -DWORKBENCH -I"$rt_include" -I. \$(INCLUDE_PATH)
+CPPFLAGS = $wkoptimize $mtcppflags $large -DWORKBENCH -I"$rt_include" -I. \$(INCLUDE_PATH)
+LDFLAGS = $ldflags
+CCLDFLAGS = $ccldflags  $windows_flags
+LDSHAREDFLAGS =  $mtldsharedflags
+EIFLIB = "$rt_lib/$prefix$mt_prefix$wkeiflib$suffix"
+EIFTEMPLATES = $rt_templates
+LIBS = $mtlibs
+MAKE = $make
+AR = $ar
+LD = $ld
+MKDEP = $mkdep \$(DPFLAGS) --
+MV = $mv
+CP = $cp
+RANLIB = $ranlib
+RM = $rm -f
+FILE_EXIST = $file_exist
+RMDIR = $rmdir
+X2C = "$x2c"
+SHAREDLINK = $sharedlink
+SHAREDLIBS = $sharedlibs
+SHARED_SUFFIX = $shared_suffix
+COMMAND_MAKEFILE = 
+START_TEST = $start_test 
+END_TEST = $end_test 
+CREATE_TEST = $create_test 
+SYSTEM_IN_DYNAMIC_LIB = thymio_app$shared_suffix 
+!GROK!THIS!
+$spitshell >>Makefile <<'!NO!SUBS!'
+
+.SUFFIXES:.cpp .o
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+.cpp.o:
+	$(CPP) $(CPPFLAGS) -c $<
+
+OBJECTS = big_file_C1_c.o big_file_C1_cpp.o 
+
+OLDOBJECTS =  pa954.o pa954d.o eu944.o eu944d.o a_942.o a_942d.o se941.o se941d.o \
+	ma935.o ma935d.o po948.o po948d.o gr940.o gr940d.o fo952.o fo952d.o \
+	ei951.o ei951d.o a_953.o a_953d.o st934.o st934d.o mo956.o mo956d.o \
+	ra939.o ra939d.o ro938.o ro938d.o bo945.o bo945d.o po943.o po943d.o \
+	bo937.o bo937d.o ra957.o ra957d.o th933.o th933d.o po947.o po947d.o \
+	ch961.o ch961d.o th950.o th950d.o th959.o th959d.o th949.o th949d.o \
+	th958.o th958d.o th946.o th946d.o th960.o th960d.o th932.o th932d.o \
+	th931.o th931d.o pi930.o pi930d.o re955.o re955d.o bo936.o bo936d.o 
+
+all: Cobj1.o
+
+Cobj1.o: $(OBJECTS) Makefile
+	$(LD) $(LDFLAGS) -r -o Cobj1.o $(OBJECTS)
+	$(RM) $(OBJECTS)
+	$(CREATE_TEST)
+
+clean: local_clean
+clobber: local_clobber
+
+local_clean::
+	$(RM) core finished *.o
+
+local_clobber:: local_clean
+	$(RM) Makefile
+
+!NO!SUBS!
+chmod 644 Makefile
+$eunicefix Makefile
+

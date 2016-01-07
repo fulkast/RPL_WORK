@@ -1,0 +1,27 @@
+node_name: tf_broadcaster_loc_node
+
+spin_rate: 10.0
+
+translation_map_x: 0.0
+translation_map_y: 0.0
+translation_map_z: 0.0
+
+rotation_map_x: 0.0
+rotation_map_y: 0.0
+rotation_map_z: 0.0
+rotation_map_w: 1.0
+
+translation_camera_x: 0.0
+translation_camera_y: 0.0
+translation_camera_z: 0.0
+
+rotation_camera_x: 0.0
+rotation_camera_y: 0.0
+rotation_camera_z: 0.0
+rotation_camera_w: 1.0
+
+tf1_from: odometry_link
+tf1_to: particles_tf
+
+tf2_from: odometry_link
+tf2_to: points_tf

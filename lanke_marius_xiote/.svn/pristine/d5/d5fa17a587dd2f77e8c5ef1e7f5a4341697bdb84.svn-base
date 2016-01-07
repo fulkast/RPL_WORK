@@ -1,0 +1,5 @@
+frame_id: odometry_link                                              # frame_id of the visualization marker for displaying in rviz
+ns: my_namesspace                                                    # namespace of the marker
+mesh_resource: package://pr2_description/meshes/base_v0/base.dae     # only if using a MESH_RESOURCE marker type
+
+color_alpha: 0.5                                                     # transparancy of the marker

@@ -1,0 +1,44 @@
+<!-- Converts depth image and RGB image into XYZRGB Point Cloud -->
+<launch>
+	<!-- Nodelet manager for this pipeline -->
+	<node name="record_player_manager" pkg="nodelet" type="nodelet" args="manager" output="screen"/>
+	 
+	<!-- Debayer and undistort the rgb image -->
+	<node name="deb_rgb" pkg="nodelet" type="nodelet" 
+	args="load image_proc/debayer record_player_manager --no-bond">
+		<remap from="image_raw" to="camera/rgb/image_raw"/>
+		<remap from="image_mono" to="camera/rgb/image_mono"/>
+		<remap from="image_color" to="camera/rgb/image_color"/>	
+	</node>
+	<node name="rect_rgb" pkg="nodelet" type="nodelet"
+	args="load image_proc/rectify record_player_manager --no-bond">
+		<remap from="camera_info" to="camera/rgb/camera_info"/>
+		<remap from="image_mono" to="camera/rgb/image_color"/>
+		<remap from="image_rect" to="camera/rgb/image_rect_color"/>				
+	</node>
+	 
+	<!-- The depth image is already rectified and registered to the camera optical frame, 
+	but stored in mm; convert it to meters -->
+	<node name="metric_rect" pkg="nodelet" type="nodelet"
+	args="load depth_image_proc/convert_metric record_player_manager --no-bond">
+		<remap from="image_raw" to="camera/depth/image_raw"/>
+		<remap from="image" to="camera/depth/image"/>
+	</node>
+	 
+	<!-- Register depth image to RGB frame -->
+	<node name="frame_registrator" pkg="nodelet" type="nodelet"
+	args="load depth_image_proc/register record_player_manager --no-bond">
+		<remap from="rgb/camera_info" to="camera/rgb/camera_info"/>
+		<remap from="depth/image_rect" to="camera/depth/image"/>
+		<remap from="depth/camera_info" to="camera/depth/camera_info" />
+	</node>
+
+	<!-- Convert it into a point cloud -->
+	<node name="cloudify" pkg="nodelet" type="nodelet"
+	args="load depth_image_proc/point_cloud_xyzrgb record_player_manager --no-bond">
+		<remap from="rgb/camera_info" to="camera/depth/camera_info"/>
+		<remap from="rgb/image_rect_color" to="camera/rgb/image_rect_color"/>
+		<remap from="depth_registered/points" to="camera/depth_registered/points" />
+	</node>
+
+</launch> 
