@@ -1,0 +1,7 @@
+<launch>
+<!-- object_recognition_node-->
+<node pkg="object_recognition" type="object_recognition_node" name="recognize" output="screen"/>
+ 
+
+
+</launch>

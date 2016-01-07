@@ -1,0 +1,89 @@
+
+
+VoxelGridParam
+{
+    LeafSize 0.0025
+}
+
+NormalSearchParam
+{
+normalsetRadiusSearch 0.005
+}
+
+SpinImageParam
+{
+spinImagesetRadiusSearch 0.05
+spinSetMinPointCountInNeighbourhood 16
+spinImageCosineSupport 0.5
+}
+
+Visualization
+{
+camera_frame_name camera_depth_optical_frame
+}
+
+CorrelationParam
+{
+maxBlobSize 800
+maxModelBlobSize 800
+minAccuracy 0.96
+minCount 10
+}
+
+
+Namespace {
+boundingBoxTopicName boundingBox
+
+}
+
+PassThroughFilterParam
+{
+    Lower 0.0
+    Upper 1.0
+}
+
+LibraryPath
+{
+PathName	/src/ful/object_recognition/config/
+}
+
+EuclideanClustererParam
+{
+ecClusterTolerance 0.02
+ecMaxCluster 250000
+ecMinCluster 100
+}
+
+Library
+{
+firefighter1	firefighter/firefighter_close_0.pcd
+firefighter2	firefighter/firefighter_close_45.pcd
+firefighter3	firefighter/firefighter_close_90.pcd
+firefighter4	firefighter/firefighter_close_135.pcd
+
+
+
+duck1	duck/duck_close_0.pcd
+duck2	duck/duck_close_45.pcd
+duck3	duck/duck_close_90.pcd
+duck4	duck/duck_close_135.pcd
+
+
+
+man1	man/man_close_0.pcd
+man2	man/man_close_45.pcd
+man3	man/man_close_90.pcd
+man4	man/man_close_135.pcd
+
+
+
+
+woman1	woman/woman_close_0.pcd
+woman2	woman/woman_close_45.pcd
+woman3	woman/woman_close_90.pcd
+woman4	woman/woman_close_135.pcd
+
+
+
+}
+
